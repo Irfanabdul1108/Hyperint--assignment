@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { DesignVariation } from './types';
 import MinimalLayout from './layouts/MinimalLayout';
 import StructuredLayout from './layouts/StructuredLayout';
@@ -9,6 +9,12 @@ import UltimateLayout from './layouts/UltimateLayout';
 
 const App: React.FC = () => {
   const [variation, setVariation] = useState<DesignVariation>('ultimate');
+  useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth', // remove if you want instant jump
+  });
+}, [variation]);
 
   const variations: { id: DesignVariation; label: string; title: string; desc: string }[] = [
     { id: 'minimal', label: '1. Basic', title: 'The Essentialist', desc: 'Focus on clean typography and whitespace for high readability. Removes all friction.' },
